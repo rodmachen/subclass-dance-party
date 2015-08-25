@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background:url(https://christylane.com/wp-content/uploads/2011/12/p-1974-Tile_Oak.jpg);
+  /*background-color:#444;*/
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
