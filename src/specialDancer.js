@@ -5,6 +5,15 @@ var SpecialDancer = function(top, left, timeBetweenSteps) {
   if (!window.audioPlaying) {
     window.audio.play();
     window.audioPlaying = true;
+    $('body').css({
+      'margin': 0,
+      'font-size': '18px',
+      'background': 'url(http://slateman.net/images/gaming/backgrounds/sf2ww-blanka.gif) no-repeat center center fixed',
+      '-webkit-background-size': 'cover',
+      '-moz-background-size': 'cover',
+      '-o-background-size': 'cover',
+      'background-size': 'cover'
+    });
   }
 };
 
