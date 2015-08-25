@@ -39,5 +39,11 @@ $(document).ready(function(){
     };
   });
 
+   $(".goBackButton").on("click", function(event){
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].setPosition(window.dancers[i].top, window.dancers[i].left);
+    };
+  });
+
 });
 
