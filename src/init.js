@@ -1,5 +1,7 @@
 $(document).ready(function(){
   window.dancers = [];
+  window.audioPlaying = false;
+  window.audio = new Audio("audio.mp3");
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -27,7 +29,15 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+  
+  $(".lineUpButton").on("click", function(event){
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].lineUp();
+    };
+  });
+
 });
 

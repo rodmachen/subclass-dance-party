@@ -3,6 +3,8 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timer = timeBetweenSteps;
   this.step();
   this.setPosition(top, left);
+  this.top = top;
+  this.left = left;
 };
 
 Dancer.prototype.step = function() {
@@ -18,3 +20,7 @@ Dancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+Dancer.prototype.lineUp = function() {
+  this.setPosition(40, this.left);
+}
