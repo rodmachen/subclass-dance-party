@@ -45,5 +45,42 @@ $(document).ready(function(){
     };
   });
 
+   $('.danceTogether').on('click', function(event){
+    // we have positions of dancers via the window.dancers array
+// to get the closest dancer for any element
+  //we can use reduce to pull out the closest dancer 
+  //change their positions to be a lot closer;
+      //pick a random dancer
+      var comparedDancer = window.dancers.shift();
+      var randomDancerIndex = Math.floor(window.dancers.length * Math.random());
+      var randomDancer = window.dancers[randomDancerIndex];
+      // get closest dancer to random Dancer
+      var closestDancer = window.dancers.reduce(function(current, dancer){
+        // get current distance with dancer from array
+        var currentDistance = (randomDancer.top - dancer.top) * (randomDancer.top - dancer.top) + (randomDancer.left - dancer.left) * (randomDancer.left - dancer.left);
+        // get current smallest distance with current dancer
+        var currentClosest = (randomDancer.top - current.top) * (randomDancer.top - current.top) + (randomDancer.left - current.left) * (randomDancer.left - current.left);
+        // if current dancer is itself, return previous
+        if (currentDistance === 0){
+          console.log("I am myself");
+          return current;
+        }
+        // if closest dancer is closer
+        if (currentClosest < currentDistance){
+          // return the previous closest dancer
+          console.log("The previous value was closer");
+          return current;
+        }
+        // if current dancer is closer then, return new dancer
+        if (currentClosest > currentDistance){
+          console.log("The new value is closer");
+          return dancer;
+        }
+      }, comparedDancer);
+      var randomTop = $("body").height() * Math.random();
+      var randomLeft = $("body").width() * Math.random();
+      randomDancer.setPosition(randomTop, randomLeft);
+      closestDancer.setPosition(randomTop, randomLeft + 50);
+   });
 });
 

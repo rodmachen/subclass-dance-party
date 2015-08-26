@@ -1,6 +1,6 @@
 var SpecialDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<img src="http://www.zangief.net/images/zangief4.gif">');
+  this.$node = $('<img class="special" src="http://www.zangief.net/images/zangief4.gif">');
   this.setPosition(top, left);
   if (!window.audioPlaying) {
     window.audio.play();
@@ -15,11 +15,21 @@ var SpecialDancer = function(top, left, timeBetweenSteps) {
       'background-size': 'cover'
     });
   }
+  this.transform();
 };
 
 SpecialDancer.prototype = Object.create(Dancer.prototype);
 SpecialDancer.prototype.constructor = SpecialDancer;
 SpecialDancer.prototype.step = function(){
   Dancer.prototype.step.call(this);
-  this.$node.fadeToggle();
+  // this.$node.fadeToggle();
 };
+SpecialDancer.prototype.transform = function(){
+  var self = this;
+  $('.special').on("mouseover", function(event){
+     self.$node.attr('src', 'zangief2.gif');
+
+    console.log(self);
+    console.log('testestestestestest');
+  });
+}
